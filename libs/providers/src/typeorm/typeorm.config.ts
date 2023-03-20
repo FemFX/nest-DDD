@@ -2,6 +2,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { config } from 'dotenv';
 import { join } from 'path';
 import { ConfigService } from '@nestjs/config';
+import { PostEntity } from '@lib/entities';
 
 config({ path: join(process.cwd(), '.env') });
 
@@ -19,12 +20,13 @@ const options = (): DataSourceOptions => {
     type: 'postgres',
     schema: 'public',
     logging: configService.get('IS_PROD') === 'false',
-    entities: [join(process.cwd(), 'dist', 'libs', 'entities', '**', '*.entity.{ts, js}')],
-    migrations: [
-      join(process.cwd(), 'migrations', '**', '*.migration.{ts, js}'),
-    ],
-    migrationsRun: true,
-    migrationsTableName: 'migrations',
+    entities: [PostEntity],
+    synchronize: true,
+    // migrations: [
+    //   join(process.cwd(), 'migrations', '**', '*.migration.{ts, js}'),
+    // ],
+    // migrationsRun: true,
+    // migrationsTableName: 'migrations',
   };
 };
 

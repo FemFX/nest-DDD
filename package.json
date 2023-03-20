@@ -24,10 +24,11 @@
     "migration:gen": "nest build entities --tsc && cross-env npm run typeorm -- -d ./libs/providers/src/typeorm/typeorm.config.ts migration:generate ./migrations/%npm_config_name%_migration"
   },
   "dependencies": {
-    "@nestjs/common": "^8.0.0",
+    "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.3.1",
-    "@nestjs/core": "^8.0.0",
-    "@nestjs/platform-express": "^8.0.0",
+    "@nestjs/core": "^9.3.10",
+    "@nestjs/cqrs": "^9.0.3",
+    "@nestjs/platform-express": "^9.3.10",
     "@nestjs/typeorm": "^9.0.1",
     "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
@@ -36,9 +37,9 @@
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
-    "@nestjs/cli": "^8.0.0",
+    "@nestjs/cli": "^9.3.0",
     "@nestjs/schematics": "^8.0.0",
-    "@nestjs/testing": "^8.0.0",
+    "@nestjs/testing": "^9.3.10",
     "@types/express": "^4.17.13",
     "@types/jest": "27.4.0",
     "@types/node": "^16.0.0",
@@ -81,7 +82,8 @@
     ],
     "moduleNameMapper": {
       "^@lib/providers(|/.*)$": "<rootDir>/libs/providers/src/$1",
-      "^@lib/entities(|/.*)$": "<rootDir>/libs/entities/src/$1"
+      "^@lib/entities(|/.*)$": "<rootDir>/libs/entities/src/$1",
+      "^@lib/post(|/.*)$": "<rootDir>/libs/post/src/$1"
     }
   }
 }
